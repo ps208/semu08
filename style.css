@@ -1,0 +1,310 @@
+/* style.css */
+:root {
+  --gap: 0;                 /* ✅ 영역 간격 붙이기 */
+  --font-base: 1vw;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  background: #f7f7f7;
+  color: #111;
+  font-size: clamp(14px, 1rem, 16px);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  padding: 1.2vw;
+}
+header h1 {
+  font-size: clamp(24px, 3vw, 40px);
+  margin: 0;
+}
+
+.stle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 70px;
+  margin-right: 70px;
+}
+
+.one {
+  font-weight: bold;
+  font-size: 50px;
+  color: rgb(105, 56, 56);
+}
+
+.two {
+  color: rgb(194, 68, 68);
+}
+
+.three {
+  text-align: right;
+  color: rgb(126, 63, 63);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.four {
+    display: inline-block;
+    color: rgb(170, 114, 51);
+    border: 1px solid;
+    padding: 4px 8px;
+    border-radius: 25px;
+    background-color: rgb(255, 238, 216);
+}
+
+.setting {
+    text-align: center;
+}
+
+.reset {
+  position: absolute;
+  left: 2vw;
+  background: #0077ff;
+  color: white;
+  border: none;
+  padding: 0.6em 1.4em;
+  border-radius: 0.6em;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: clamp(14px, 1vw, 18px);
+  margin-left: 20px;
+}
+.reset:hover { background: #005fcc; }
+
+.wrap {
+  display: flex;
+  gap: var(--gap);          /* ✅ 0 */
+  padding: 2vw;
+  max-width: 90vw;
+  margin: 0 auto;
+  flex-wrap: nowrap;        /* ✅ 한 줄 유지 */
+  align-items: stretch;
+}
+
+/* ✅ 3개의 영역이 붙어 보이게 경계선만 */
+.wrap > *:not(:last-child) {
+  border-right: 1px solid #e6e6e6;
+}
+
+/* ===========================
+   가운데 스티커 팔레트
+=========================== */
+.sticker-palette {
+  flex: 0 0 340px;          /* ✅ 가운데 폭 고정 */
+  background: white;
+  padding: 1vw;
+  box-sizing: border-box;
+}
+
+.stickers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5vw;
+}
+
+.sticker-wrap {
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  min-height: 90px;
+}
+
+.sticker {
+  width: 100%;
+  height: 60px;        /* ✅ 높이 확정 (핵심) */
+  border-radius: 0.6vw;
+  background: white;
+  box-shadow: 0 0.3vw 0.8vw rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  transition: transform 0.12s;
+}
+
+.sticker:active { transform: scale(0.95); }
+
+/* ✅ 핵심 수정: height:% 대신 max-height */
+.sticker img {
+  width: 75%;
+  height: 35px;        /* ✅ 확정 높이 (핵심) */
+  object-fit: contain;
+  margin-top: 3px;
+  display: block;
+}
+
+.sticker .label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.9em;
+  font-weight: 700;
+  margin-top: 3px;
+}
+
+.sticker-wrap .price {
+  margin-top: 3px;
+  font-size: 0.8em;
+  color: #444;
+  pointer-events: none;
+}
+
+/* ===========================
+   과세/면세 드롭존 (좌/우)
+=========================== */
+.dropzone.single {
+  flex: 1;
+  min-width: 400px;
+  background: white;
+  border: 0.3vw dashed #ccc;
+  padding: 1vw;
+  box-sizing: border-box;
+}
+
+.dropzone strong {
+  font-size: 1.2em;
+  display: block;
+  margin-bottom: 0.6vw;
+}
+
+.drop-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6vw;
+}
+
+.total {
+  margin-top: 0.6vw;
+  font-weight: bold;
+}
+
+.dropzone._active {
+  border-color: #0077ff;
+  background: #f0f8ff;
+}
+
+/* 아래 도구 */
+.bottom-tools {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2vw;
+  max-width: 90vw;
+  margin: 3vw auto;
+  flex-wrap: wrap;
+}
+
+.calculator {
+  flex: 1;
+  background: white;
+  border-radius: 1vw;
+  box-shadow: 0 0.4vw 1vw rgba(0,0,0,0.05);
+  padding: 1.2vw;
+  min-width: 260px;
+}
+
+.calc-display {
+  width: 100%;
+  height: 2.8em;
+  font-size: 1.2em;
+  text-align: right;
+  padding: 0.4em;
+  margin-bottom: 1em;
+  border: 1px solid #ccc;
+  border-radius: 0.6em;
+}
+
+.calc-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8vw;
+}
+
+.calc-btn {
+  height: clamp(45px, 5vw, 65px);
+  font-size: clamp(16px, 1.2vw, 22px);
+  border: none;
+  border-radius: 0.6vw;
+  cursor: pointer;
+  background: #eaeaea;
+  font-weight: bold;
+  transition: background 0.15s;
+}
+.calc-btn:hover { background: #dcdcdc; }
+
+.op-btn {
+  font-size: clamp(20px, 1.6vw, 26px);
+  background: #f3f3f3;
+}
+
+#equal {
+  background: #0077ff;
+  color: white;
+  font-size: clamp(22px, 1.8vw, 28px);
+}
+
+#clear {
+  background: orange;
+  color: white;
+}
+
+.answer-section {
+  flex: 1;
+  min-width: 260px;
+}
+
+.answer-box {
+  display: flex;
+  align-items: center;
+  gap: 0.6vw;
+  background: white;
+  padding: 1.2vw;
+  border-radius: 0.8vw;
+  box-shadow: 0 0.4vw 1vw rgba(0,0,0,0.05);
+}
+
+.answer-input {
+  flex: 1;
+  padding: 0.6em;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+}
+
+.check-btn {
+  background: #0077ff;
+  color: white;
+  border: none;
+  padding: 0.8em 1.4em;
+  border-radius: 0.6em;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: clamp(14px, 1vw, 18px);
+}
+.check-btn:hover { background: #005fcc; }
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo img {
+  width: 10vw;
+}
+
+.drag-clone {
+  opacity: 0.9;
+  transform: scale(1.1);
+  pointer-events: none;
+}
